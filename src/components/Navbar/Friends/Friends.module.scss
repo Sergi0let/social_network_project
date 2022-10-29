@@ -1,0 +1,38 @@
+.friends {
+  width: 100%;
+  margin: 0.5em 0px;
+  padding: 0.2em;
+  h4 {
+    font-size: 1.4em;
+    padding: 0.5em 0;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+}
+
+.friendsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6em;
+}
+
+.item {
+  p {
+    font-size: 1em;
+  }
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #624fff;
+
+  img {
+    width: 100%;
+  }
+}

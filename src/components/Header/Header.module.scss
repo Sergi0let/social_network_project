@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+  img {
+    width: 10%;
+  }
+  p {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #624fff;
+  }
+}
+.loginBlock {
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  padding: 1em 2em;
+  background: #ffcdcd;
+  border-radius: 1em;
+  transition: all 0.3s ease 0s;
+  box-shadow: 10px 10px 15px 0px rgba(98, 79, 255, 0.3);
+  &:hover {
+    color: #ffcdcd;
+    background: #fff;
+    box-shadow: 10px 10px 15px 0px rgba(98, 79, 255, 0.75);
+  }
+}

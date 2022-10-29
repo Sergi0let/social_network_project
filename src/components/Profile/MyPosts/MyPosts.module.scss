@@ -1,0 +1,23 @@
+.postsBlock {
+}
+.postsText {
+  textarea {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+  }
+  button {
+    display: inline-block;
+    margin: 0em 1em 1em 1em;
+    padding: 0.7em 1em;
+    background: #ffcdcd;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 1em;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      box-shadow: 10px 10px 5px 5px rgb(247, 234, 234);
+      color: #fff;
+    }
+  }
+}

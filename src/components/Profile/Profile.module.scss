@@ -1,0 +1,22 @@
+.profile {
+  .profileWrapper {
+    display: flex;
+    gap: 0.1em;
+    padding-bottom: 1em;
+    img {
+      width: 200px;
+      border-radius: 2em;
+    }
+    .profileContent {
+      padding: 2em;
+      font-size: 1.4em;
+      .profileText {
+        line-height: 150%;
+        font-weight: 500;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
