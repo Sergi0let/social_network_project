@@ -1,0 +1,33 @@
+.form > * {
+  margin: 1em 0em;
+  font-size: 1em;
+  input {
+    padding: 0.5em 1.5em;
+    margin-right: 1em;
+  }
+}
+.formBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.formTitle {
+  margin: 0 auto;
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.formButton {
+  padding: 0.7em 2em;
+  background: #ffcdcd;
+  border-radius: 1em;
+  color: #fff;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    color: #ffcdcd;
+    background: #f2fdff;
+  }
+}

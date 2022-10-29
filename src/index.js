@@ -11,15 +11,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderEntireModeTree = (state) => {
   root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <App
-          state={state}
-          dispatch={store.dispatch.bind(store)}
-          store={store}
-        />
-      </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+      <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
+    </Provider>
   );
 };
 

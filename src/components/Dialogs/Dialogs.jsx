@@ -6,8 +6,6 @@ import DialogItem from './DialogItem/DialogsItem';
 import s from './Dialogs.module.scss';
 
 const Dialogs = (props) => {
-  debugger;
-  let state = props.messagePage;
   let dialogsElements = props.dialogsData.map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
   ));
@@ -31,16 +29,6 @@ const Dialogs = (props) => {
         <div className={s.dialogsItems}>{dialogsElements}</div>
         <div className={s.messages}>
           <div>{messagesElements}</div>
-          <div>
-            <textarea
-              value={messageBody}
-              onChange={messageChange}
-              placeholder="Enter you message."
-            />
-            <div>
-              <button onClick={onSendMessageClick}>Send</button>
-            </div>
-          </div>
         </div>
       </div>
     </>
