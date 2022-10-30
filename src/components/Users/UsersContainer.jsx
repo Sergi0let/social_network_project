@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+
 import {
   follow,
   unFollow,
   setCurrentPage,
   toggleFolowingProgress,
   getUsers,
-} from '../redux/usersReducer';
-
+} from '../../redux/usersReducer';
 import Users from './Users';
-
 import Preloader from '../common/preloader/Preloader';
-import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
   componentDidMount() {

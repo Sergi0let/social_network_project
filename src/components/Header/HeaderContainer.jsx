@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAuthUserData } from '../redux/authReducer';
+import { getAuthUserData } from '../../redux/authReducer';
 
 import Header from './Header';
 
