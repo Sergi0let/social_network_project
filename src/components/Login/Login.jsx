@@ -36,6 +36,7 @@ const LoginForm = (props) => {
         />
         rememberMe
       </div>
+      <div>{props.error && <div>{props.error}</div>}</div>
       <div>
         <button className={s.formButton}>Submin</button>
       </div>
@@ -46,7 +47,6 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({ form: 'contact' })(LoginForm);
 
 const Login = (props) => {
-  debugger;
   const onSubmit = (formData) => {
     props.login(formData.email, formData.password, formData.rememberMe);
   };

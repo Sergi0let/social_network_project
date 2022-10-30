@@ -11,14 +11,14 @@ import {
 } from '../../redux/profileReducer';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
 
-const myId = 26438;
+// const myId = 26438;
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let profileId = this.props.router.params.profileId;
 
     if (!profileId) {
-      profileId = myId;
+      profileId = this.props.authorizedUserId;
     }
     this.props.getUserProfile(profileId);
     this.props.getStatus(profileId);
@@ -38,6 +38,8 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  authorizedUserId: state.auth.userId,
+  isAuth: state.auth.isAuth,
 });
 
 function withRouter(Component) {
