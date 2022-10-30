@@ -36,12 +36,18 @@ export const profileApi = {
     return instanse.get(`profile/status/${userId}`);
   },
   updateStatus(status) {
-    instanse.put('profile/status', { status: status });
+    return instanse.put('profile/status', { status: status });
   },
 };
 
 export const authAPI = {
   getAuth() {
-    return instanse.get('auth/me').then((response) => response.data);
+    return instanse.get('auth/me');
+  },
+  login(email, password, rememberMe = false) {
+    return instanse.post('/auth/login', { email, password, rememberMe });
+  },
+  logout() {
+    return instanse.delete('/auth/login');
   },
 };

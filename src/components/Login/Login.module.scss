@@ -1,7 +1,10 @@
 .form > * {
   margin: 1em 0em;
   font-size: 1em;
+
   input {
+    border-radius: 1em;
+
     padding: 0.5em 1.5em;
     margin-right: 1em;
   }
