@@ -25,14 +25,17 @@ const dialogsReducer = (state = initialState, action) => {
       let body = action.newMessageBody;
       return {
         ...state,
-        messagesData: [...state.messagesData, { id: 6, message: body }],
+        messagesData: [
+          ...state.messagesData,
+          { id: Math.random() + 2, message: body },
+        ],
       };
     }
-
     default:
       return state;
   }
 };
+
 export default dialogsReducer;
 
 export const sendMessage = (newMessageBody) => ({

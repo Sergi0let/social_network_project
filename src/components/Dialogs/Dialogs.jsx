@@ -7,11 +7,11 @@ import s from './Dialogs.module.scss';
 import { Field, reduxForm } from 'redux-form';
 
 const Dialogs = (props) => {
-  let dialogsElements = props.dialogsData.map((dialog) => (
+  const dialogsElements = props.dialogsData.map((dialog) => (
     <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
   ));
 
-  let messagesElements = props.messagesData.map((message) => (
+  const messagesElements = props.messagesData.map((message) => (
     <Message message={message.message} id={message.id} key={message.id} />
   ));
 
