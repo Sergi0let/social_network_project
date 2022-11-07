@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Memo } from 'react';
 import Post from './Post/Post';
 
 import s from './MyPosts.module.scss';
@@ -27,7 +27,7 @@ let AddNewPostForm = (props) => {
 
 AddNewPostForm = reduxForm({ form: 'ProfileAddNewPostForm' })(AddNewPostForm);
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
   const postsElement = props.posts.map((post) => (
     <Post
       key={post.id}
@@ -48,6 +48,6 @@ const MyPosts = (props) => {
       <div className={s.posts}>{postsElement}</div>
     </div>
   );
-};
+});
 
 export default MyPosts;

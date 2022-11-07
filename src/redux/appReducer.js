@@ -1,4 +1,3 @@
-import { authAPI } from '../api/api';
 import { getAuthUserData } from './authReducer';
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
@@ -25,7 +24,8 @@ export default appReducer;
 export const initializedSucces = () => ({ type: INITIALIZED_SUCCESS });
 
 export const initialize = () => (dispatch) => {
-  let dispatchResult = dispatch(getAuthUserData());
-  debugger;
-  // dispatch(initializedSucces());
+  let promise = dispatch(getAuthUserData());
+  return promise.then(() => {
+    dispatch(initializedSucces());
+  });
 };

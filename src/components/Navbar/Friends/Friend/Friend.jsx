@@ -4,12 +4,10 @@ import s from '../Friends.module.scss';
 
 const Friend = (props) => {
   return (
-    <div className={s.item}>
-      <div className={s.image}>
-        {/* <img src="./images/user1.jpg" alt="friend" /> */}
-      </div>
+    <li className={s.item}>
+      <div className={s.image}></div>
       <p>{props.name}</p>
-    </div>
+    </li>
   );
 };
 

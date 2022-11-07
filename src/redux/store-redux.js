@@ -11,6 +11,7 @@ import dialogsReducer from './dialogsReducer';
 import profileReducer from './profileReducer';
 import sidebarReducer from './sidebarReducer';
 import usersReducer from './usersReducer';
+import appReducer from './appReducer';
 
 let reducers = combineReducers({
   profilePage: profileReducer,
@@ -19,6 +20,7 @@ let reducers = combineReducers({
   usersPage: usersReducer,
   auth: authReducer,
   form: formReducer,
+  app: appReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunk));

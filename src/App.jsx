@@ -13,13 +13,18 @@ import Login from './components/Login/Login';
 
 import './App.scss';
 import { connect } from 'react-redux';
-import { getAuthUserData } from './redux/authReducer';
+import { initialize } from './redux/appReducer';
+import Preloader from './components/common/preloader/Preloader';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.getAuthUserData();
+    this.props.initialize();
   }
+
   render() {
+    if (!this.props.initialized) {
+      return <Preloader />;
+    }
     return (
       <div className="app">
         <BrowserRouter>
@@ -62,4 +67,10 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { getAuthUserData })(App);
+const mapStateToProps = (state) => {
+  return {
+    initialized: state.app.initialized,
+  };
+};
+
+export default connect(mapStateToProps, { initialize })(App);
