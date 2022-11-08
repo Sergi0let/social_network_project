@@ -7,7 +7,7 @@ import userPhoto from '../../assets/images/user.png';
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  console.log(props.followingInProgress);
+
   return (
     <div className={s.numPage}>
       {pages.map((page) => (

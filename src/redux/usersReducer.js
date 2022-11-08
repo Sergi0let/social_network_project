@@ -88,38 +88,42 @@ export const toggleFolowingProgress = (isFetching, userId) => ({
 });
 
 export const getUsers = (currentPage, pageNumber) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    dispatch(toggleFolowingProgress(true));
-    usersAPI.getUsers(currentPage, pageNumber).then((data) => {
-      dispatch(setCurrentPage(currentPage));
-      dispatch(setUsers(data.items));
-      dispatch(setTotalCount(data.totalCount));
-      dispatch(toggleIsFetching(false));
-      dispatch(toggleFolowingProgress(true));
-    });
+    const data = await usersAPI.getUsers(currentPage, pageNumber);
+    dispatch(setCurrentPage(currentPage));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalCount(data.totalCount));
+    dispatch(toggleIsFetching(false));
   };
 };
 
+const followUnfollowFlow = async (
+  dispatch,
+  userId,
+  apiMethod,
+  actionCreator
+) => {
+  const data = await apiMethod(userId);
+  if (data.resultCode === 0) {
+    dispatch(actionCreator(userId));
+  }
+  dispatch(toggleFolowingProgress(false, userId));
+};
+
 export const follow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleFolowingProgress(true, userId));
-    usersAPI.getFolowed(userId).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(followSucces(userId));
-      }
-      dispatch(toggleFolowingProgress(false, userId));
-    });
+    const apiMethod = usersAPI.getFolowed.bind(usersAPI);
+    const actionCreator = followSucces;
+    followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };
 export const unFollow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleFolowingProgress(true, userId));
-    usersAPI.getUnFolowed(userId).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(unFollowSucces(userId));
-      }
-      dispatch(toggleFolowingProgress(false, userId));
-    });
+    const apiMethod = usersAPI.getUnFolowed.bind(usersAPI);
+    const actionCreator = unFollowSucces;
+    followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };

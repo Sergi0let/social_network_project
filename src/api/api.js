@@ -1,5 +1,4 @@
 import axios from 'axios';
-// const axios = require('axios').default;
 
 const instanse = axios.create({
   withCredentials: true,
@@ -31,7 +30,7 @@ export const usersAPI = {
 
 export const profileApi = {
   getProfile(userId) {
-    return instanse.get(`profile/${userId}`).then((response) => response.data);
+    return instanse.get(`profile/${userId}`);
   },
   getStatus(userId) {
     return instanse.get(`profile/status/${userId}`);
