@@ -2,8 +2,8 @@
   "name": "social",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.3",
@@ -42,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
+    "@testing-library/jest-dom": "^5.16.5"
   }
 }
