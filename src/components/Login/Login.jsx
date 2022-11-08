@@ -4,39 +4,25 @@ import { Navigate } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { login } from '../../redux/authReducer';
 import { requiredField } from '../../validation/validators';
-import { Input } from '../common/FormsControls/FormsControls';
+import { createField, Input } from '../common/FormsControls/FormsControls';
 
 import s from './Login.module.scss';
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
-    <form className={s.form} onSubmit={props.handleSubmit}>
-      <div>
-        <Field
-          placeholder="Email"
-          name={'email'}
-          component={Input}
-          validate={[requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="Password"
-          name={'password'}
-          component={Input}
-          validate={[requiredField]}
-        />
-      </div>
-      <div>
-        <Field
-          placeholder="input"
-          name={'rememberMe'}
-          component={Input}
-          type={'checkbox'}
-        />
-        rememberMe
-      </div>
-      <div>{props.error && <div>{props.error}</div>}</div>
+    <form className={s.form} onSubmit={handleSubmit}>
+      {createField('Email', 'email', [requiredField], Input)}
+      {createField('Password', 'password', [requiredField], Input)}
+      {createField(
+        null,
+        'rememberMe',
+        null,
+        Input,
+        { type: 'checkbox' },
+        'rememberMe'
+      )}
+
+      <div>{error && <div>{error}</div>}</div>
       <div>
         <button className={s.formButton}>Submin</button>
       </div>
@@ -46,12 +32,12 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: 'contact' })(LoginForm);
 
-const Login = (props) => {
+const Login = ({ isAuth, login }) => {
   const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe);
+    login(formData.email, formData.password, formData.rememberMe);
   };
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Navigate to="/profile" />;
   }
   return (

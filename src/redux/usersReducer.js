@@ -1,4 +1,5 @@
 import { usersAPI } from '../api/api.js';
+import { updatedObjectInArray } from '../utils/object-helper/object-helper.js';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -22,21 +23,15 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map((user) => {
-          if (user.id === action.userId) {
-            return { ...user, followed: true };
-          }
-          return user;
+        users: updatedObjectInArray(state.users, action.userId, 'id', {
+          followed: true,
         }),
       };
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map((user) => {
-          if (user.id === action.userId) {
-            return { ...user, followed: false };
-          }
-          return user;
+        users: updatedObjectInArray(state.users, action.userId, 'id', {
+          followed: false,
         }),
       };
     case SET_USERS: {
@@ -114,16 +109,22 @@ const followUnfollowFlow = async (
 export const follow = (userId) => {
   return async (dispatch) => {
     dispatch(toggleFolowingProgress(true, userId));
-    const apiMethod = usersAPI.getFolowed.bind(usersAPI);
-    const actionCreator = followSucces;
-    followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
+    followUnfollowFlow(
+      dispatch,
+      userId,
+      usersAPI.getFolowed.bind(usersAPI),
+      followSucces
+    );
   };
 };
 export const unFollow = (userId) => {
   return async (dispatch) => {
     dispatch(toggleFolowingProgress(true, userId));
-    const apiMethod = usersAPI.getUnFolowed.bind(usersAPI);
-    const actionCreator = unFollowSucces;
-    followUnfollowFlow(dispatch, userId, apiMethod, actionCreator);
+    followUnfollowFlow(
+      dispatch,
+      userId,
+      usersAPI.getUnFolowed.bind(usersAPI),
+      unFollowSucces
+    );
   };
 };
