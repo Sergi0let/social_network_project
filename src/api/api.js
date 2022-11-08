@@ -36,7 +36,7 @@ export const profileApi = {
     return instanse.get(`profile/status/${userId}`);
   },
   updateStatus(status) {
-    return instanse.put('profile/status', { status: status });
+    return instanse.put('profile/status', { status });
   },
 };
 

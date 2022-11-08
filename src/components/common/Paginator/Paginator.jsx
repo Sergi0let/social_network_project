@@ -13,8 +13,9 @@ const Paginator = ({
 
   return (
     <div>
-      {pages.map((page) => (
+      {pages.map((page, index) => (
         <span
+          key={index}
           className={currentPage === page && s.selectedPage}
           onClick={() => onPageChanged(page)}
         >
