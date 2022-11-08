@@ -15,21 +15,22 @@ import withAuthRedirect from '../../hoc/WithAuthRedirect';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let profileId = this.props.router.params.profileId;
-
+    const { getUserProfile, getStatus, authorizedUserId, router } = this.props;
+    let profileId = router.params.profileId;
     if (!profileId) {
-      profileId = this.props.authorizedUserId;
+      profileId = authorizedUserId;
     }
-    this.props.getUserProfile(profileId);
-    this.props.getStatus(profileId);
+    getUserProfile(profileId);
+    getStatus(profileId);
   }
   render() {
+    const { profile, updateStatus, status } = this.props;
     return (
       <Profile
         {...this.props}
-        profile={this.props.profile}
-        updateStatus={this.props.updateStatus}
-        status={this.props.status}
+        profile={profile}
+        updateStatus={updateStatus}
+        status={status}
       />
     );
   }
