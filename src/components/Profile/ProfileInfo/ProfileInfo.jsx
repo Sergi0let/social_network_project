@@ -1,6 +1,7 @@
 import React from 'react';
 import Preloader from '../../common/preloader/Preloader';
 import ProfileStatus from './ProfileStatus';
+import userPhoto from '../../../assets/images/user.png';
 
 import s from '../Profile.module.scss';
 
@@ -11,16 +12,26 @@ const ProfileInfo = ({ profile, updateStatus, status }) => {
   return (
     <div className={s.profileWrapper}>
       <div>
-        <img src={profile.photos.large} alt="Profile user" />
+        <img src={profile.photos.large || userPhoto} alt="Profile user" />
       </div>
       <div className={s.profileContent}>
         <div className={s.profileText}>{profile.fullName}</div>
         <div className={s.profileText}>
-          <span>Date of birth: </span>2 October
+          <span>My id: </span>
+          {profile.userId}
         </div>
         <div className={s.profileText}>
-          <span>Location: </span>Kyiv
+          <span>aboutMe: </span>
+          {profile.aboutMe}
         </div>
+        <div className={s.profileText}>My email: {profile.contacts.email}</div>
+        <div className={s.profileText}>
+          Facebook: {profile.contacts.facebook}
+        </div>
+        <div className={s.profileText}>
+          instagram: {profile.contacts.instagram}
+        </div>
+
         <div className={s.profileText}>{profile.lookingForAJob}</div>
         <div className={s.profileText}>{profile.lookingForAJobDescription}</div>
       </div>
@@ -29,3 +40,23 @@ const ProfileInfo = ({ profile, updateStatus, status }) => {
   );
 };
 export default ProfileInfo;
+/*
+{
+         "aboutMe": "я круто чувак",
+         "contacts": {
+                    "skype": "skyp",
+                    "vk": "vk.com",
+                    "facebook": "facebook",
+                    "icq": "icq",
+                    "email": "email",
+                    "googlePlus": "gogep",
+                    "twitter": "twitter",
+                    "instagram": "instagra",
+                    "whatsApp": "watsap"
+                   },
+         "lookingForAJob": true,
+         "lookingForAJobDescription": 'Ищу работу, знаю это это и это',
+         "fullName": "samurai dmitry",
+         "userId": 2
+ }
+*/

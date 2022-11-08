@@ -1,4 +1,5 @@
 import {
+  compose,
   applyMiddleware,
   combineReducers,
   legacy_createStore as createStore,
@@ -23,8 +24,8 @@ let reducers = combineReducers({
   app: appReducer,
 });
 
-let store = createStore(reducers, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-window.store = store;
+let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 
 export default store;
