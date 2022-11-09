@@ -1,3 +1,14 @@
-.selectedPage {
-  font-weight: 700;
+.paginator {
+  .selectedPage {
+    font-weight: 700;
+  }
+
+  button {
+    background: #624fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+  }
 }
