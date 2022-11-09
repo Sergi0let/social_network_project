@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+## You can [check] (https://sergi0let.github.io/social_network_project/) and fun.
+
 In the project directory, you can run:
 
 ### `npm start`
