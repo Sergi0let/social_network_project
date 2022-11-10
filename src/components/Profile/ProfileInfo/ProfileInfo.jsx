@@ -5,14 +5,21 @@ import userPhoto from '../../../assets/images/user.png';
 
 import s from '../Profile.module.scss';
 
-const ProfileInfo = ({ profile, updateStatus, status }) => {
+const ProfileInfo = ({ profile, updateStatus, status, isOvner, savePhoto }) => {
   if (!profile) {
     return <Preloader />;
   }
+
+  const onMainPhotSelector = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
+  };
   return (
     <div className={s.profileWrapper}>
       <div>
         <img src={profile.photos.large || userPhoto} alt="Profile user" />
+        {isOvner && <input type={'file'} onChange={onMainPhotSelector} />}
       </div>
       <div className={s.profileContent}>
         <div className={s.profileText}>{profile.fullName}</div>
