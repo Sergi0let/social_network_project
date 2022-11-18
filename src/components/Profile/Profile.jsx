@@ -4,7 +4,14 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import s from './Profile.module.scss';
 
-const Profile = ({ profile, status, updateStatus, isOvner, savePhoto }) => {
+const Profile = ({
+  profile,
+  status,
+  updateStatus,
+  isOvner,
+  savePhoto,
+  saveProfile,
+}) => {
   return (
     <div className={s.profile}>
       <ProfileInfo
@@ -13,6 +20,7 @@ const Profile = ({ profile, status, updateStatus, isOvner, savePhoto }) => {
         status={status}
         updateStatus={updateStatus}
         savePhoto={savePhoto}
+        saveProfile={saveProfile}
       />
       <MyPostsContainer />
     </div>

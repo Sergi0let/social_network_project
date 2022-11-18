@@ -6,7 +6,14 @@ import userPhoto from '../../../assets/images/user.png';
 import s from '../Profile.module.scss';
 import ProfileDataForm from './ProfileDataForm';
 
-const ProfileInfo = ({ profile, updateStatus, status, isOvner, savePhoto }) => {
+const ProfileInfo = ({
+  profile,
+  updateStatus,
+  status,
+  isOvner,
+  savePhoto,
+  saveProfile,
+}) => {
   const [editMode, setEditMode] = useState(false);
 
   if (!profile) {
@@ -19,6 +26,10 @@ const ProfileInfo = ({ profile, updateStatus, status, isOvner, savePhoto }) => {
     }
   };
 
+  const onSubmit = (formData) => {
+    saveProfile(formData);
+  };
+
   return (
     <div className={s.profileWrapper}>
       <div>
@@ -27,7 +38,7 @@ const ProfileInfo = ({ profile, updateStatus, status, isOvner, savePhoto }) => {
       </div>
 
       {editMode ? (
-        <ProfileDataForm profile={profile} />
+        <ProfileDataForm profile={profile} onSubmit={onSubmit} />
       ) : (
         <ProfileData
           profile={profile}
@@ -79,24 +90,3 @@ const Contacts = ({ contactTitle, contactValue }) => {
     </div>
   );
 };
-
-/*
-{
-         "aboutMe": "я круто чувак",
-         "contacts": {
-                    "skype": "skyp",
-                    "vk": "vk.com",
-                    "facebook": "facebook",
-                    "icq": "icq",
-                    "email": "email",
-                    "googlePlus": "gogep",
-                    "twitter": "twitter",
-                    "instagram": "instagra",
-                    "whatsApp": "watsap"
-                   },
-         "lookingForAJob": true,
-         "lookingForAJobDescription": 'Ищу работу, знаю это это и это',
-         "fullName": "samurai dmitry",
-         "userId": 2
- }
-*/

@@ -87,3 +87,11 @@ export const savePhoto = (file) => async (dispatch) => {
     dispatch(savePhotoSucces(response.data.photos));
   }
 };
+
+export const saveProfile = (profile) => async (dispatch) => {
+  const response = await profileApi.saveProfile(profile);
+  debugger;
+  if (response.data.resultCode === 0) {
+    dispatch(savePhotoSucces(response.data.photos));
+  }
+};
