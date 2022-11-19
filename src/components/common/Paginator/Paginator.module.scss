@@ -1,4 +1,8 @@
 .paginator {
+  width: 100%;
+  div {
+    margin: 0 auto;
+  }
   .selectedPage {
     font-weight: 700;
   }

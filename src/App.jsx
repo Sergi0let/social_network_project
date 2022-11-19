@@ -21,9 +21,21 @@ const DialogsContainer = React.lazy(() =>
 const ProfileContainer = React.lazy(() =>
   import('./components/Profile/ProfileContainer')
 );
+
 class App extends React.Component {
+  catchAllUnhandleErrors = (reason, promise) => {
+    alert('Some error');
+  };
   componentDidMount() {
     this.props.initialize();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandleErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      'unhandledrejection',
+      this.catchAllUnhandleErrors
+    );
   }
 
   render() {
@@ -40,7 +52,7 @@ class App extends React.Component {
               <div className="content__img-bg"></div>
               <Routes>
                 <Route
-                  path="/profile"
+                  path="/*"
                   element={
                     <Suspense fallback={<div>Loading...</div>}>
                       <ProfileContainer />
@@ -62,7 +74,6 @@ class App extends React.Component {
                   path="/dialogs/*"
                   element={
                     <Suspense fallback={<div>Loading...</div>}>
-                      {' '}
                       <DialogsContainer
                         store={this.props.store}
                         dispatch={this.props.dispatch}
