@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
+
 import {
   createField,
   Input,
@@ -8,12 +9,13 @@ import {
 
 import s from '../Profile.module.scss';
 
-const ProfileDataForm = ({ profile, handleSubmit }) => {
+const ProfileDataForm = ({ profile, handleSubmit, error }) => {
   return (
     <form className={s.profileContent} onSubmit={handleSubmit}>
       <div>
         <button>Save</button>
       </div>
+      <div>{error && <div>{error}</div>}</div>
       <div className={s.profileText}>
         <b>My fullname</b>: {createField('Full name', 'fullname', [], Input)}
       </div>
@@ -36,13 +38,13 @@ const ProfileDataForm = ({ profile, handleSubmit }) => {
       </div>
       <div className={s.profileText}>
         <b>Contacts</b>:
-        {/* {Object.keys(profile.contacts).map((key) => (
-          <Contacts
-            key={key}
-            contactTitle={key}
-            contactValue={profile.contacts[key]}
-          />
-        ))} */}
+        {Object.keys(profile.contacts).map((key) => (
+          <div key={key}>
+            <b>
+              {key}: {createField(key, 'contacts.' + key, [], Input)}
+            </b>
+          </div>
+        ))}
       </div>
     </form>
   );
