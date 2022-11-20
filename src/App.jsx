@@ -10,7 +10,7 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 
-import { initialize } from './redux/appReducer';
+import { initialize } from './redux/appReducer.ts';
 import Preloader from './components/common/preloader/Preloader';
 
 import './App.scss';
