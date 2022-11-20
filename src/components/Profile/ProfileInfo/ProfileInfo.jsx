@@ -75,13 +75,15 @@ const ProfileData = ({ profile, isOvner, goToEditMode }) => {
       </div>
       <div className={s.profileText}>
         <b>Contacts</b>:
-        {Object.keys(profile.contacts).map((key) => (
-          <Contacts
-            key={key}
-            contactTitle={key}
-            contactValue={profile.contacts[key]}
-          />
-        ))}
+        {Object.keys(profile.contacts)
+          .map((key) => (
+            <Contacts
+              key={key}
+              contactTitle={key}
+              contactValue={profile.contacts[key]}
+            />
+          ))
+          .filter((social) => social.props.contactValue)}
       </div>
     </div>
   );
@@ -94,3 +96,13 @@ const Contacts = ({ contactTitle, contactValue }) => {
     </div>
   );
 };
+
+/*
+(
+          <Contacts
+            key={key}
+            contactTitle={key}
+            contactValue={profile.contacts[key]}
+          />
+        )
+        */
