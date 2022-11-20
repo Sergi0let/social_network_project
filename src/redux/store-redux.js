@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 import authReducer from './authReducer.ts';
-import dialogsReducer from './dialogsReducer';
+import dialogsReducer from './dialogsReducer.ts';
 import profileReducer from './profileReducer';
 import sidebarReducer from './sidebarReducer';
 import usersReducer from './usersReducer';

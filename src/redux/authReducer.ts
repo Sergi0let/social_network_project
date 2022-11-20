@@ -4,21 +4,23 @@ import { authAPI } from '../api/api';
 
 const SET_USER_DATA = 'AUTH_SET_USER_DATA';
 
-export type InitialStateType = {
-  userId: null | number;
-  email: null | string;
-  login: null | string;
-  isFetching: boolean;
-  isAuth: boolean;
+// export type InitialStateType2 = {
+//   userId: null | number;
+//   email: null | string;
+//   login: null | string;
+//   isFetching: boolean;
+//   isAuth: boolean;
+// };
+
+export const initialState = {
+  userId: null as null | number,
+  email: null as string | null,
+  login: null as string | null,
+  isFetching: false as boolean,
+  isAuth: false as boolean,
 };
 
-export const initialState: InitialStateType = {
-  userId: null,
-  email: null,
-  login: null,
-  isFetching: false,
-  isAuth: false,
-};
+export type InitialStateType = typeof initialState;
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
