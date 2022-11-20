@@ -1,4 +1,4 @@
-import React, { Memo } from 'react';
+import React from 'react';
 import Post from './Post/Post';
 
 import s from './MyPosts.module.scss';
