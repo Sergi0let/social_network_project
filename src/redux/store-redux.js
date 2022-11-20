@@ -11,7 +11,7 @@ import authReducer from './authReducer.ts';
 import dialogsReducer from './dialogsReducer.ts';
 import profileReducer from './profileReducer.ts';
 import sidebarReducer from './sidebarReducer';
-import usersReducer from './usersReducer';
+import usersReducer from './usersReducer.ts';
 import appReducer from './appReducer.ts';
 
 let reducers = combineReducers({
