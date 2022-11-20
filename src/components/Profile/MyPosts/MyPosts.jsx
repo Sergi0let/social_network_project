@@ -1,8 +1,8 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import Post from './Post/Post';
 
 import s from './MyPosts.module.scss';
-import { Field, reduxForm } from 'redux-form';
 import {
   requiredField,
   maxLengthCreator,

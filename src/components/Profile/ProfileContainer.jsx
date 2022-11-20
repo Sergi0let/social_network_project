@@ -10,7 +10,7 @@ import {
   getStatus,
   savePhoto,
   saveProfile,
-} from '../../redux/profileReducer';
+} from '../../redux/profileReducer.ts';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
 
 // const myId = 26438;
