@@ -3,18 +3,30 @@ import cn from 'classnames';
 
 import s from './Paginator.module.scss';
 
-const Paginator = ({
+type PropsType = {
+  totalUsersCount: number;
+  onPageChanged: (pageNum: number) => void;
+  currentPage: number;
+  pageSize: number;
+  portionSize: number;
+};
+
+const Paginator: React.FC<PropsType> = ({
   totalUsersCount,
   onPageChanged,
   currentPage,
   pageSize,
-  portionSize = '10',
+  portionSize = 10,
 }) => {
   let pagesCount = Math.ceil(totalUsersCount / pageSize);
-  let pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
+  let pages: Array<number> = Array.from(
+    { length: pagesCount },
+    (_, i) => i + 1
+  );
+  let portionCount: number = Math.ceil(pagesCount / portionSize);
 
-  let portionCount = Math.ceil(pagesCount / portionSize);
   const [portionNum, setPortionNum] = useState(1);
+
   let leftPortionPageNumber = (portionNum - 1) * portionSize + 1;
   let rightPortionPageNumber = portionNum * portionSize;
   return (
@@ -32,7 +44,6 @@ const Paginator = ({
             <span
               key={index}
               className={cn({ [s.selectedPage]: currentPage === page })}
-              // className={currentPage === page && s.selectedPage}
               onClick={() => onPageChanged(page)}
             >
               {page}

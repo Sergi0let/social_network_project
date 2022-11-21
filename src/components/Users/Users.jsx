@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Paginator from '../common/Paginator/Paginator';
+import Paginator from '../common/Paginator/Paginator.tsx';
 import User from './User';
 
 import s from './users.module.scss';
