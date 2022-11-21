@@ -9,12 +9,12 @@ import s from './users.module.scss';
 type PropsType = {
   pageSize: number;
   totalUsersCount: number;
-  onPageChanged: (pageNum: number) => void;
   currentPage: number;
   users: Array<UserType>;
   followingInProgress: Array<number>;
-  unFollow: () => void;
-  follow: () => void;
+  onPageChanged: (pageNum: number) => void;
+  unFollow: (userId: number) => void;
+  follow: (userId: number) => void;
 };
 const Users: FC<PropsType> = ({
   pageSize,
