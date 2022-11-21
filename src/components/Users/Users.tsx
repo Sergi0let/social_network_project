@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-
+// @ts-ignore
 import Paginator from '../common/Paginator/Paginator.tsx';
 import User from './User';
-import { UserType } from '../../types.ts';
-
+import { UserType } from '../../types/types';
+// @ts-ignore
 import s from './users.module.scss';
 
 type PropsType = {

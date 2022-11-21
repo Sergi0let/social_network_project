@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer';
+import UsersContainer from './components/Users/UsersContainer.tsx';
 import Login from './components/Login/Login';
 
 import { initialize } from './redux/appReducer.ts';
