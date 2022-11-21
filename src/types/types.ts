@@ -29,3 +29,8 @@ export type UserType = {
   status: string;
   photos: PhotosType;
 };
+
+export type UserFriendsType = {
+  id: string;
+  name: string;
+};

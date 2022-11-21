@@ -19,7 +19,7 @@ const initialState = {
   newPostText: '',
 };
 
-export type InitialStateType = typeof initialState;
+ type InitialStateType = typeof initialState;
 
 const profileReducer = (
   state = initialState,

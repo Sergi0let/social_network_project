@@ -10,7 +10,7 @@ import { reducer as formReducer } from 'redux-form';
 import authReducer from './authReducer.ts';
 import dialogsReducer from './dialogsReducer.ts';
 import profileReducer from './profileReducer.ts';
-import sidebarReducer from './sidebarReducer';
+import sidebarReducer from './sidebarReducer.ts';
 import usersReducer from './usersReducer.ts';
 import appReducer from './appReducer.ts';
 
