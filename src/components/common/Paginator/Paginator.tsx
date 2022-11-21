@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-
+// @ts-ignore
 import s from './Paginator.module.scss';
 
 type PropsType = {

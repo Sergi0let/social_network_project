@@ -5,8 +5,6 @@ import { compose } from 'redux';
 import {
   follow,
   unFollow,
-  setCurrentPage,
-  toggleFolowingProgress,
   getUsers,
   // @ts-ignore
 } from '../../redux/usersReducer.ts';
@@ -102,15 +100,14 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 };
 
 export default compose(
-  // TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState
-  connect<MapStateToPropsType, MapDispatchPropsType, OwnPropsType>(
-    mapStateToProps,
-    {
-      follow,
-      unFollow,
-      setCurrentPage,
-      toggleFolowingProgress,
-      getUsers,
-    }
-  )
+  connect<
+    MapStateToPropsType,
+    MapDispatchPropsType,
+    OwnPropsType,
+    AppStateType
+  >(mapStateToProps, {
+    follow,
+    unFollow,
+    getUsers,
+  })
 )(UsersContainer);
