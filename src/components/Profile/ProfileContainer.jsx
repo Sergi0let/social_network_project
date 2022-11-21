@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import Profile from './Profile';
+import Profile from './Profile.tsx';
 import {
   getUserProfile,
   updateStatus,

@@ -5,12 +5,12 @@ import { NavLink } from 'react-router-dom';
 import s from './users.module.scss';
 // @ts-ignore
 import userPhoto from '../../assets/images/user.png';
-import { PhotosType, UserType } from '../../types/types';
+import { PhotosType } from '../../types/types';
 
 type UserPropsType = {
   id: number;
   photos: PhotosType;
-  followingInProgress: Array<UserType>;
+  followingInProgress: Array<number>;
   followed: boolean;
   status: string;
 

@@ -4,7 +4,7 @@ import Paginator from '../common/Paginator/Paginator.tsx';
 // @ts-ignore
 import User from './User.tsx';
 import { UserType } from '../../types/types';
-// @ts-ignore
+
 import s from './users.module.scss';
 
 type PropsType = {
