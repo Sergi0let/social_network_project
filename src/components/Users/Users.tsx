@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Paginator from '../common/Paginator/Paginator.tsx';
 import User from './User';
+import { UserType } from '../../types.ts';
 
 import s from './users.module.scss';
 
-const Users = ({
+type PropsType = {
+  pageSize: number;
+  totalUsersCount: number;
+  onPageChanged: (pageNum: number) => void;
+  currentPage: number;
+  users: Array<UserType>;
+  followingInProgress: Array<number>;
+  unFollow: () => void;
+  follow: () => void;
+};
+const Users: FC<PropsType> = ({
   pageSize,
   totalUsersCount,
   onPageChanged,
   currentPage,
   users,
-  followingInProgress,
-  follow,
-  unFollow,
+  ...props
 }) => {
   return (
     <div className={s.numPage}>
@@ -27,9 +36,9 @@ const Users = ({
         <User
           key={user.id}
           {...user}
-          followingInProgress={followingInProgress}
-          follow={follow}
-          unFollow={unFollow}
+          followingInProgress={props.followingInProgress}
+          follow={props.follow}
+          unFollow={props.unFollow}
         />
       ))}
     </div>

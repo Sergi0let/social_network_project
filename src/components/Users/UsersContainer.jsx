@@ -9,7 +9,7 @@ import {
   toggleFolowingProgress,
   getUsers,
 } from '../../redux/usersReducer.ts';
-import Users from './Users';
+import Users from './Users.tsx';
 import Preloader from '../common/preloader/Preloader';
 import {
   getPageSize,
