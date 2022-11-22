@@ -151,7 +151,7 @@ export const toggleFolowingProgress = (
 });
 
 type DispatchType = Dispatch<ActionTypes>;
-type GetStateType = () => AppStateType;
+// type GetStateType = () => AppStateType;
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionTypes>;
 
 export const getUsers = (
