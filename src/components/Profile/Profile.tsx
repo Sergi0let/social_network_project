@@ -1,10 +1,12 @@
-import React from 'react';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
+import React, { FC } from 'react';
+// @ts-ignore
+import ProfileInfo from './ProfileInfo/ProfileInfo.tsx';
 
 import MyPostsContainer from './MyPosts/MyPostsContainer';
+import { ProfileInfoType } from '../../types/types';
 import s from './Profile.module.scss';
 
-const Profile = ({
+const Profile: FC<ProfileInfoType> = ({
   profile,
   status,
   updateStatus,

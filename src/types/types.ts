@@ -34,3 +34,13 @@ export type UserFriendsType = {
   id: string;
   name: string;
 };
+
+export type ProfileInfoType = {
+  profile: Array<ProfileType>;
+  status: string;
+  isOvner: boolean;
+  savePhoto: (photo: any) => void;
+  updateStatus: () => void;
+  saveProfile: (form: Array<string>) => any;
+  onMainPhotSelector: (e: React.ChangeEvent<HTMLInputElement>) => any;
+};

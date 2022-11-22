@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import Preloader from '../../common/preloader/Preloader';
+// @ts-ignore
 import ProfileStatus from './ProfileStatus.tsx';
+// @ts-ignore
 import userPhoto from '../../../assets/images/user.png';
 
+import { ProfileInfoType } from '../../../types/types';
 import s from '../Profile.module.scss';
 import ProfileDataForm from './ProfileDataForm';
 
-const ProfileInfo = ({
+const ProfileInfo: FC<ProfileInfoType> = ({
   profile,
   updateStatus,
   status,
@@ -14,19 +17,19 @@ const ProfileInfo = ({
   savePhoto,
   saveProfile,
 }) => {
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   if (!profile) {
     return <Preloader />;
   }
 
-  const onMainPhotSelector = (e) => {
+  const onMainPhotSelector = (e: { target: { files: string | any[] } }) => {
     if (e.target.files.length) {
       savePhoto(e.target.files[0]);
     }
   };
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: any) => {
     saveProfile(formData).then(() => setEditMode(false));
   };
 
@@ -96,13 +99,3 @@ const Contacts = ({ contactTitle, contactValue }) => {
     </div>
   );
 };
-
-/*
-(
-          <Contacts
-            key={key}
-            contactTitle={key}
-            contactValue={profile.contacts[key]}
-          />
-        )
-        */
