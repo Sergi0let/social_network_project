@@ -6,6 +6,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
+
 // @ts-ignore
 import authReducer from './authReducer.ts'; // @ts-ignore
 import dialogsReducer from './dialogsReducer.ts'; // @ts-ignore
