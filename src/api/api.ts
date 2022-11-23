@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-
+import axios from 'axios';
+// @ts-ignore
 import { ProfileInfoType, ContactsType } from '../types/types.ts';
 
 const instanse = axios.create({
@@ -116,5 +116,3 @@ export const authAPI = {
     return instanse.delete<string>('/auth/login');
   },
 };
-
-authAPI.getAuth().then((res: AxiosResponse<any>) => res);

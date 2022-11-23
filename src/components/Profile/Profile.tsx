@@ -4,6 +4,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo.tsx';
 
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import { ProfileInfoType } from '../../types/types';
+// @ts-ignore
 import s from './Profile.module.scss';
 
 const Profile: FC<ProfileInfoType> = ({

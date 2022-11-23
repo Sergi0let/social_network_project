@@ -1,5 +1,6 @@
 import { stopSubmit } from 'redux-form';
 import { ThunkAction } from 'redux-thunk';
+// @ts-ignore
 import { authAPI, ResultCodeEnum } from '../api/api.ts';
 import { AppStateType } from './store-redux';
 
