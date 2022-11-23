@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router';
 import { reduxForm } from 'redux-form';
+// @ts-ignore
 import { login } from '../../redux/authReducer.ts';
 import { requiredField } from '../../validation/validators';
 import { createField, Input } from '../common/FormsControls/FormsControls';
-
+import { InjectedFormProps } from 'redux-form';
+// @ts-ignore
 import s from './Login.module.scss';
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType>> = ({
+  handleSubmit,
+  error,
+}) => {
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       {createField('Email', 'email', [requiredField], Input)}
@@ -30,13 +35,29 @@ const LoginForm = ({ handleSubmit, error }) => {
   );
 };
 
-const LoginReduxForm = reduxForm({ form: 'contact' })(LoginForm);
+const LoginReduxForm = reduxForm<LoginFormValuesType>({
+  form: 'contact',
+})(LoginForm);
 
-const Login = ({ isAuth, login }) => {
-  const onSubmit = (formData) => {
-    login(formData.email, formData.password, formData.rememberMe);
+type MapStateToPropsType = {
+  auth: any;
+  isAuth: boolean;
+};
+type MapDispatchToPropsType = {
+  login: (email: string, password: string, rememberMe: boolean) => void;
+};
+
+type LoginFormValuesType = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+};
+const Login: React.FC<MapStateToPropsType & MapDispatchToPropsType> = ({
+  isAuth,
+}) => {
+  const onSubmit = ({ email, password, rememberMe }: LoginFormValuesType) => {
+    login(email, password, rememberMe);
   };
-
   if (isAuth) {
     return <Navigate to="/profile" />;
   }
@@ -48,7 +69,7 @@ const Login = ({ isAuth, login }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: MapStateToPropsType) => {
   return {
     isAuth: state.auth.isAuth,
   };

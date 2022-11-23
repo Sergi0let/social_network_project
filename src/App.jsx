@@ -8,7 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer.tsx';
-import Login from './components/Login/Login';
+import Login from './components/Login/Login.tsx';
 
 import { initialize } from './redux/appReducer.ts';
 import Preloader from './components/common/preloader/Preloader';

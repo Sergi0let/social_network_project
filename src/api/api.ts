@@ -16,20 +16,19 @@ type getUsersType = {
 };
 
 export const usersAPI = {
-  getUsers(currentPage = 1, pageSize = 10) {
-    return instanse
-      .get<getUsersType>(`users?page=${currentPage}&count=${pageSize}`)
-      .then((response) => response.data);
+  async getUsers(currentPage = 1, pageSize = 10) {
+    const response = await instanse.get<getUsersType>(
+      `users?page=${currentPage}&count=${pageSize}`
+    );
+    return response.data;
   },
-  getFolowed(userId: number) {
-    return instanse
-      .post<number>(`follow/${userId}`)
-      .then((response) => response.data);
+  async getFolowed(userId: number) {
+    const response = await instanse.post<number>(`follow/${userId}`);
+    return response.data;
   },
-  getUnFolowed(userId: number) {
-    return instanse
-      .delete<number>(`follow/${userId}`)
-      .then((response) => response.data);
+  async getUnFolowed(userId: number) {
+    const response = await instanse.delete<number>(`follow/${userId}`);
+    return response.data;
   },
   getProfile(userId: number) {
     console.warn('Obsolete method/ Please profileApi object');
@@ -100,17 +99,17 @@ type getLoginType = {
 };
 
 export const authAPI = {
-  getAuth() {
-    return instanse.get<getAuthType>('auth/me').then((res) => res.data);
+  async getAuth() {
+    const res = await instanse.get<getAuthType>('auth/me');
+    return res.data;
   },
-  login(email: string, password: string, rememberMe = false) {
-    return instanse
-      .post<getLoginType>('/auth/login', {
-        email,
-        password,
-        rememberMe,
-      })
-      .then((res) => res.data);
+  async login(email: string, password: string, rememberMe = false) {
+    const res = await instanse.post<getLoginType>('/auth/login', {
+      email,
+      password,
+      rememberMe,
+    });
+    return res.data;
   },
   logout() {
     return instanse.delete<string>('/auth/login');
