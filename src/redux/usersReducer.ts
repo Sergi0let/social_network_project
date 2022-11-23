@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import { ThunkAction } from 'redux-thunk';
-import { usersAPI } from '../api/api.js';
+import { usersAPI } from '../api/api.ts';
 import { UserType } from '../types/types.js';
 import { updatedObjectInArray } from '../utils/object-helper/object-helper.js';
 import { AppStateType } from './store-redux';

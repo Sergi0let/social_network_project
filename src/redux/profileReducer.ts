@@ -1,5 +1,5 @@
 import { stopSubmit } from 'redux-form';
-import { profileApi, usersAPI } from '../api/api';
+import { profileApi, usersAPI } from '../api/api.ts';
 import { PostDataType, ProfileType, PhotosType } from '../types/types';
 import { AppStateType } from './store-redux';
 import { ThunkAction } from 'redux-thunk';
