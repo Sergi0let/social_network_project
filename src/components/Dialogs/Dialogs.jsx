@@ -5,8 +5,11 @@ import DialogItem from './DialogItem/DialogsItem';
 
 import s from './Dialogs.module.scss';
 import { Field, reduxForm } from 'redux-form';
-import { Textarea } from '../common/FormsControls/FormsControls';
-import { requiredField, maxLengthCreator } from '../../validation/validators';
+import { Textarea } from '../common/FormsControls/FormsControls.tsx';
+import {
+  requiredField,
+  maxLengthCreator,
+} from '../../validation/validators.ts';
 
 const Dialogs = (props) => {
   const dialogsElements = props.dialogsData.map((dialog) => (

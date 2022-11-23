@@ -6,8 +6,8 @@ import s from './MyPosts.module.scss';
 import {
   requiredField,
   maxLengthCreator,
-} from '../../../validation/validators';
-import { Textarea } from '../../common/FormsControls/FormsControls';
+} from '../../../validation/validators.ts';
+import { Textarea } from '../../common/FormsControls/FormsControls.tsx';
 
 const maxLength10 = maxLengthCreator(10);
 

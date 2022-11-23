@@ -104,11 +104,12 @@ export const authAPI = {
     return res.data;
   },
   async login(email: string, password: string, rememberMe = false) {
-    const res = await instanse.post<getLoginType>('/auth/login', {
+    const res = await instanse.post<getLoginType>('auth/login', {
       email,
       password,
       rememberMe,
     });
+    console.log('rex');
     return res.data;
   },
   logout() {

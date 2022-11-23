@@ -63,6 +63,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
   const authData = await authAPI.getAuth();
   if (authData.resultCode === ResultCodeEnum.Succes) {
     let { id, email, login } = authData.data;
+
     dispatch(setAuthUserData(id, email, login, true));
   }
 };
@@ -75,6 +76,7 @@ export const login =
   ): ThunkAction<void, AppStateType, unknown, ActionTypes | any> =>
   async (dispatch) => {
     const data = await authAPI.login(email, password, rememberMe);
+    console.log(data);
     if (data.resultCode === ResultCodeEnum.Succes) {
       dispatch(getAuthUserData());
     } else {

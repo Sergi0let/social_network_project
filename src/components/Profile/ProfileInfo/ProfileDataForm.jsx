@@ -5,7 +5,7 @@ import {
   createField,
   Input,
   Textarea,
-} from '../../common/FormsControls/FormsControls';
+} from '../../common/FormsControls/FormsControls.tsx';
 
 import s from '../Profile.module.scss';
 

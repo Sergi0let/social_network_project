@@ -4,8 +4,10 @@ import { Navigate } from 'react-router';
 import { reduxForm } from 'redux-form';
 // @ts-ignore
 import { login } from '../../redux/authReducer.ts';
-import { requiredField } from '../../validation/validators';
-import { createField, Input } from '../common/FormsControls/FormsControls';
+// @ts-ignore
+import { requiredField } from '../../validation/validators.ts';
+// @ts-ignore
+import { createField, Input } from '../common/FormsControls/FormsControls.tsx';
 import { InjectedFormProps } from 'redux-form';
 // @ts-ignore
 import s from './Login.module.scss';
