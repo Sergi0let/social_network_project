@@ -24,6 +24,7 @@ export const usersAPI = {
   },
   async getFolowed(userId: number) {
     const response = await instanse.post<number>(`follow/${userId}`);
+
     return response.data;
   },
   async getUnFolowed(userId: number) {
@@ -109,10 +110,10 @@ export const authAPI = {
       password,
       rememberMe,
     });
-    console.log('rex');
+
     return res.data;
   },
   logout() {
-    return instanse.delete<string>('/auth/login');
+    return instanse.delete<string>('auth/login');
   },
 };

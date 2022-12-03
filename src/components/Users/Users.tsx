@@ -4,7 +4,7 @@ import Paginator from '../common/Paginator/Paginator.tsx';
 // @ts-ignore
 import User from './User.tsx';
 import { UserType } from '../../types/types';
-
+// @ts-ignore
 import s from './users.module.scss';
 
 type PropsType = {
@@ -34,11 +34,11 @@ const Users: FC<PropsType> = ({
         totalUsersCount={totalUsersCount}
         pageSize={pageSize}
       />
-      {users.map((user) => (
+      {users.map((user: any) => (
         <User
           key={user.id}
           {...user}
-          followed={props.followed}
+          followed={user.followed}
           followingInProgress={props.followingInProgress}
           follow={props.follow}
           unFollow={props.unFollow}
