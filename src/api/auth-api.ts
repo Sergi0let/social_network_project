@@ -1,19 +1,30 @@
 // @ts-ignore
-import { instanse } from './api.ts';
+import { instanse, ResponseType } from './api.ts';
+
+type MeResponseDataType = {
+  id: number;
+  email: string;
+  login: string;
+};
+
+type LoginResponseDataType = {
+  userId: number;
+};
 
 export const authAPI = {
-  async getAuth() {
-    const res = await instanse.get('auth/me');
-    return res.data;
+  getAuth() {
+    return instanse
+      .get<ResponseType<MeResponseDataType>>('auth/me')
+      .then((res) => res.data);
   },
-  async login(email: string, password: string, rememberMe = false) {
-    const res = await instanse.post('auth/login', {
-      email,
-      password,
-      rememberMe,
-    });
-
-    return res.data;
+  login(email: string, password: string, rememberMe = false) {
+    return instanse
+      .post<ResponseType<LoginResponseDataType>>('auth/login', {
+        email,
+        password,
+        rememberMe,
+      })
+      .then((res) => res.data);
   },
   logout() {
     return instanse.delete('auth/login');
