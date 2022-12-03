@@ -1,7 +1,7 @@
 import { stopSubmit } from 'redux-form';
-import { ThunkAction } from 'redux-thunk';
-// @ts-ignore
-import { authAPI, ResultCodeEnum } from '../api/api.ts';
+import { ThunkAction } from 'redux-thunk'; // @ts-ignore
+import { ResultCodeEnum } from '../api/api.ts'; // @ts-ignore
+import { authAPI } from '../api/auth-api.ts';
 import { AppStateType } from './store-redux';
 
 const SET_USER_DATA = 'AUTH_SET_USER_DATA';
