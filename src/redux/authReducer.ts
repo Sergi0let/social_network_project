@@ -1,11 +1,11 @@
-import { FormAction, stopSubmit } from 'redux-form';
+import { stopSubmit } from 'redux-form';
 // @ts-ignore
 import { ResultCodeEnum } from '../api/api.ts'; // @ts-ignore
 import { authAPI } from '../api/auth-api.ts';
 import { BaseThunkType, InferActionTypes } from './store-redux';
 
 export const initialState = {
-  userId: null as null | string,
+  userId: null as null | number,
   email: null as string | null,
   login: null as string | null,
   isFetching: false as boolean,
@@ -31,7 +31,7 @@ export default authReducer;
 
 export const actions = {
   setAuthUserData: (
-    userId: string | null,
+    userId: number | null,
     email: string | null,
     login: string | null,
     isAuth: boolean
