@@ -3,8 +3,9 @@ import {
   applyMiddleware,
   combineReducers,
   legacy_createStore as createStore,
+  Action,
 } from 'redux';
-import thunk from 'redux-thunk';
+import thunk, { ThunkAction } from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 
 // @ts-ignore
@@ -29,10 +30,15 @@ type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType>;
 
 type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never;
+
 export type InferActionTypes<
   T extends { [key: string]: (...args: any[]) => any }
 > = ReturnType<PropertiesTypes<T>>;
 
+export type BaseThunkType<
+  A extends Action = Action,
+  R = Promise<void>
+> = ThunkAction<R, AppStateType, unknown, A>;
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

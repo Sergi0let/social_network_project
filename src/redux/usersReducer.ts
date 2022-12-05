@@ -4,15 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 import { usersAPI } from '../api/users-api.ts';
 import { UserType } from '../types/types.js';
 import { updatedObjectInArray } from '../utils/object-helper/object-helper.js';
-import { AppStateType, InferActionTypes } from './store-redux';
-
-// const FOLLOW = 'FOLLOW';
-// const UNFOLLOW = 'UNFOLLOW';
-// const SET_USERS = 'SET_USERS';
-// const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-// const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
-// const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-// const TOGGLE_IS_FOLOWING_PROGRESS = 'TOGGLE_IS_FOLOWING_PROGRESS';
+import { AppStateType, BaseThunkType, InferActionTypes } from './store-redux';
 
 const initialState = {
   users: [] as Array<UserType>,
@@ -121,8 +113,7 @@ export const actions = {
 };
 
 type DispatchType = Dispatch<ActionTypes>;
-// type GetStateType = () => AppStateType;
-type ThunkType = ThunkAction<void, AppStateType, unknown, ActionTypes>;
+type ThunkType = BaseThunkType<ActionTypes>;
 
 export const getUsers = (
   currentPage: number,
