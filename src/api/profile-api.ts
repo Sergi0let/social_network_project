@@ -1,26 +1,41 @@
 // @ts-ignore
-import { instanse } from './api.ts';
+import { instanse, ResponseType } from './api.ts';
+import { PhotosType, ProfileType } from '../types/types';
+
+type savePhotoResponseDataType = {
+  photos: PhotosType;
+};
 
 export const profileApi = {
-  getProfile(userId) {
-    return instanse.get(`profile/${userId}`);
+  getProfile(userId: number) {
+    return instanse
+      .get<ProfileType>(`profile/${userId}`)
+      .then((res) => res.data);
   },
-  getStatus(userId) {
-    return instanse.get(`profile/status/${userId}`);
+  getStatus(userId: number) {
+    return instanse
+      .get<string>(`profile/status/${userId}`)
+      .then((res) => res.data);
   },
-  updateStatus(status) {
-    return instanse.put('profile/status', { status });
+  updateStatus(status: string) {
+    return instanse
+      .put<ResponseType>('profile/status', { status })
+      .then((res) => res.data);
   },
-  savePhoto(photoFile) {
+  savePhoto(photoFile: any) {
     const formData = new FormData();
     formData.append('image', photoFile);
-    return instanse.put('profile/photo', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    return instanse
+      .put<ResponseType<PhotosType>>('profile/photo', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => res.data);
   },
   saveProfile(profile) {
-    return instanse.put(`profile`, profile);
+    return instanse
+      .put<ResponseType<savePhotoResponseDataType>>(`profile`, profile)
+      .then((res) => res.data);
   },
 };

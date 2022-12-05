@@ -114,21 +114,21 @@ export const getUserProfile =
   (userId: number): ThunkType =>
   async (dispatch, getState) => {
     const response = await profileApi.getProfile(userId);
-    dispatch(setUserProfile(response.data));
+    dispatch(setUserProfile(response));
   };
 
 export const getStatus =
   (userId: number): ThunkType =>
   async (dispatch) => {
     const response = await profileApi.getStatus(userId);
-    dispatch(setStatus(response.data));
+    dispatch(setStatus(response));
   };
 
 export const updateStatus =
   (status: string): ThunkType =>
   async (dispatch) => {
     const response = await profileApi.updateStatus(status);
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
       dispatch(setStatus(status));
     }
   };
@@ -137,7 +137,7 @@ export const savePhoto =
   (file: any): ThunkType =>
   async (dispatch) => {
     const response = await profileApi.savePhoto(file);
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
       dispatch(savePhotoSucces(response.data.photos));
     }
   };
@@ -150,13 +150,11 @@ export const saveProfile =
     const userId = getState().auth.userId;
     const response = await profileApi.saveProfile(profile);
 
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === 0) {
       dispatch(getUserProfile(userId));
     } else {
-      dispatch(
-        stopSubmit('edit-profile', { _error: response.data.messages[0] })
-      );
-      return Promise.reject(response.data.messages[0]);
+      dispatch(stopSubmit('edit-profile', { _error: response.messages[0] }));
+      return Promise.reject(response.messages[0]);
     }
   };
 // contacts: { facebook: response.data.messages[0] },

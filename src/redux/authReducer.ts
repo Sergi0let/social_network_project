@@ -2,6 +2,7 @@ import { stopSubmit } from 'redux-form';
 import { ThunkAction } from 'redux-thunk'; // @ts-ignore
 import { ResultCodeEnum } from '../api/api.ts'; // @ts-ignore
 import { authAPI } from '../api/auth-api.ts';
+import { securityAPI } from '../api/security-api';
 import { AppStateType } from './store-redux';
 
 const SET_USER_DATA = 'AUTH_SET_USER_DATA';
@@ -91,3 +92,10 @@ export const logout = (): ThunkType => async (dispatch) => {
     dispatch(setAuthUserData(null, null, null, false));
   }
 };
+
+// captha dont work
+// export const getCaptchaUrl = () => async (dispatch: any) => {
+//   const data = await securityAPI.getCaptchaUrl();
+//   const captchaUrl = data.url;
+//   // dispatch(getCaptchaUrlSucces(captchaUrl));
+// };
