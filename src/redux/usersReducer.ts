@@ -121,6 +121,7 @@ export const getUsers = (
   return async (dispatch, getState) => {
     dispatch(actions.setCurrentPage(currentPage));
     const data = await usersAPI.getUsers(currentPage, pageNumber);
+
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));
     dispatch(actions.setTotalCount(data.totalCount));

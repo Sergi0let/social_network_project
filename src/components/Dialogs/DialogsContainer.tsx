@@ -1,16 +1,14 @@
-import Dialogs from './Dialogs';
-import { connect } from 'react-redux';
-
+// @ts-ignore
+import Dialogs from './Dialogs.tsx';
+import { connect } from 'react-redux'; // @ts-ignore
 import { actions } from '../../redux/dialogsReducer.ts';
 import withAuthRedirect from '../../hoc/WithAuthRedirect';
 import { compose } from 'redux';
+import { AppStateType } from '../../redux/store-redux';
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
-    isAuth: state.auth.isAuth,
-    dialogsData: state.messagePage.dialogsData,
-    messagesData: state.messagePage.messagesData,
-    newMessageBody: state.messagePage.newMessageBody,
+    dialogsData: state.messagePage,
   };
 };
 

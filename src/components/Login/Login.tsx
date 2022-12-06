@@ -16,11 +16,22 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType>> = ({
   handleSubmit,
   error,
 }) => {
+  console.log(handleSubmit);
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      {createField('Email', 'email', [requiredField], Input)}
-      {createField('Password', 'password', [requiredField], Input)}
-      {createField(
+      {createField<LoginFormValuesTypeKeys>(
+        'Email',
+        'email',
+        [requiredField],
+        Input
+      )}
+      {createField<LoginFormValuesTypeKeys>(
+        'Password',
+        'password',
+        [requiredField],
+        Input
+      )}
+      {createField<LoginFormValuesTypeKeys>(
         null,
         'rememberMe',
         null,
@@ -41,24 +52,11 @@ const LoginReduxForm = reduxForm<LoginFormValuesType>({
   form: 'contact',
 })(LoginForm);
 
-type MapStateToPropsType = {
-  auth: any;
-  isAuth: boolean;
-};
-type MapDispatchToPropsType = {
-  login: (email: string, password: string, rememberMe: boolean) => void;
-};
-
-type LoginFormValuesType = {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-};
 const Login: React.FC<MapStateToPropsType & MapDispatchToPropsType> = ({
   isAuth,
 }) => {
-  const onSubmit = ({ email, password, rememberMe }: LoginFormValuesType) => {
-    login(email, password, rememberMe);
+  const onSubmit = (formData: LoginFormValuesType) => {
+    login(formData.email, formData.password, formData.rememberMe);
   };
   if (isAuth) {
     return <Navigate to="/profile" />;
@@ -77,3 +75,18 @@ const mapStateToProps = (state: MapStateToPropsType) => {
   };
 };
 export default connect(mapStateToProps, { login })(Login);
+
+type MapStateToPropsType = {
+  auth: any;
+  isAuth: boolean;
+};
+type MapDispatchToPropsType = {
+  login: (email: string, password: string, rememberMe: boolean) => void;
+};
+
+type LoginFormValuesType = {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+};
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>;

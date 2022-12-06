@@ -6,24 +6,25 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer.tsx';
-import Login from './components/Login/Login.tsx';
-
+import Settings from './components/Settings/Settings'; // @ts-ignore
+import UsersContainer from './components/Users/UsersContainer.tsx'; // @ts-ignore
+import Login from './components/Login/Login.tsx'; // @ts-ignore
 import { initialize } from './redux/appReducer.ts';
 import Preloader from './components/common/preloader/Preloader';
 
 import './App.scss';
+import { AppStateType } from './redux/store-redux';
 
-const DialogsContainer = React.lazy(() =>
-  import('./components/Dialogs/DialogsContainer')
+const DialogsContainer = React.lazy(
+  // @ts-ignore
+  () => import('./components/Dialogs/DialogsContainer.tsx')
 );
-const ProfileContainer = React.lazy(() =>
-  import('./components/Profile/ProfileContainer')
+const ProfileContainer = React.lazy(
+  () => import('./components/Profile/ProfileContainer')
 );
 
-class App extends React.Component {
-  catchAllUnhandleErrors = (reason, promise) => {
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+  catchAllUnhandleErrors = (e: PromiseRejectionEvent) => {
     alert('Some error');
   };
   componentDidMount() {
@@ -47,7 +48,7 @@ class App extends React.Component {
         <BrowserRouter>
           <HeaderContainer />
           <div className="app__main">
-            <Navbar state={this.props.state.sidebar} />
+            <Navbar />
             <div className="app__content content">
               <div className="content__img-bg"></div>
               <Routes>
@@ -63,10 +64,7 @@ class App extends React.Component {
                   path="/profile/:profileId"
                   element={
                     <Suspense fallback={<div>Loading...</div>}>
-                      <ProfileContainer
-                        dispatch={this.props.dispatch}
-                        store={this.props.store}
-                      />
+                      <ProfileContainer />
                     </Suspense>
                   }
                 />
@@ -74,10 +72,7 @@ class App extends React.Component {
                   path="/dialogs/*"
                   element={
                     <Suspense fallback={<div>Loading...</div>}>
-                      <DialogsContainer
-                        store={this.props.store}
-                        dispatch={this.props.dispatch}
-                      />
+                      <DialogsContainer />
                     </Suspense>
                   }
                 />
@@ -98,10 +93,15 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType) => {
   return {
     initialized: state.app.initialized,
   };
 };
 
 export default connect(mapStateToProps, { initialize })(App);
+
+type MapPropsType = ReturnType<typeof mapStateToProps>;
+type DispatchPropsType = {
+  initialize: () => void;
+};

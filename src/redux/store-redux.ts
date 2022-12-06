@@ -29,11 +29,16 @@ let rootReducer = combineReducers({
 type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType>;
 
-type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never;
-
-export type InferActionTypes<
-  T extends { [key: string]: (...args: any[]) => any }
-> = ReturnType<PropertiesTypes<T>>;
+export type InferActionTypes<T> = T extends {
+  [keys: string]: (...args: any[]) => infer U;
+}
+  ? U
+  : never;
+// # 2 type
+// type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never;
+// export type InferActionTypes<
+//   T extends { [key: string]: (...args: any[]) => any }
+// > = ReturnType<PropertiesTypes<T>>;
 
 export type BaseThunkType<
   A extends Action = Action,

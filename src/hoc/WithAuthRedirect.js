@@ -23,7 +23,7 @@ const withAuthRedirect = (Component) => {
 
 export default withAuthRedirect;
 
-// Class type
+// # 2 Class type
 //
 // export const withAuthRedirect = (Component) => {
 //   class RedirectComponent extends React.Component {
