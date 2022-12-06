@@ -2,8 +2,7 @@ import { FormAction, stopSubmit } from 'redux-form'; // @ts-ignore
 import { profileApi } from '../api/profile-api.ts';
 
 import { PostDataType, ProfileType, PhotosType } from '../types/types';
-import { AppStateType, BaseThunkType, InferActionTypes } from './store-redux';
-import { ThunkAction } from 'redux-thunk';
+import { BaseThunkType, InferActionTypes } from './store-redux';
 
 const initialState = {
   postsData: [
@@ -116,6 +115,7 @@ export const savePhoto =
 export const saveProfile =
   (profile: ProfileType): ThunkType =>
   async (dispatch, getState) => {
+    // @ts-ignore
     const userId = getState().auth.userId;
     const response = await profileApi.saveProfile(profile);
 
