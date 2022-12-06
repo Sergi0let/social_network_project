@@ -1,11 +1,11 @@
 import React from 'react';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogsItem';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import {
   Input,
   createField,
-  Textarea, // @ts-ignore
+  // @ts-ignore
 } from '../common/FormsControls/FormsControls.tsx';
 import {
   requiredField,
@@ -13,12 +13,13 @@ import {
 } from '../../validation/validators.ts';
 import { InitialStateType } from '../../redux/dialogsReducer';
 import { InjectedFormProps } from 'redux-form';
-
+// @ts-ignore
 import s from './Dialogs.module.scss';
 
 type OwnPropsType = {
   dialogsData: any;
   dialogsPage: InitialStateType;
+
   sendMessage: (newMessageBody: string) => void;
 };
 

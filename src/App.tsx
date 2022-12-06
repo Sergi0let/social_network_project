@@ -95,7 +95,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
 
 const mapStateToProps = (state: AppStateType) => {
   return {
-    initialized: state.app.initialized,
+    initialized: state.app,
   };
 };
 
